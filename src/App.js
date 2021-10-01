@@ -11,10 +11,7 @@ function App() {
 
       <MainHeader title="Welcome to Budget App"/>
 
-      <Statistic size='small'>
-        <Statistic.Label>Your Balance</Statistic.Label>
-        <Statistic.Value>10,000.00</Statistic.Value>
-      </Statistic>
+      <DisplayBalance label="Your Balance" value='10,000' size='small' color='black' textAlign='left'/>
 
       <Segment textAlign='center'>
         <Grid columns={2} divided>
@@ -23,14 +20,7 @@ function App() {
               <DisplayBalance label="Income" value='10.000' size='tiny' color='green' textAlign='center' />
             </Grid.Column>
             <Grid.Column>
-              <Statistic size='tiny' color='red'>
-                <Statistic.Label style={{textAlign:'left'}}>
-                  Expenses
-                </Statistic.Label>
-                <Statistic.Value>
-                  15,000.00
-                </Statistic.Value>
-              </Statistic>
+            <DisplayBalance label="Expenses" value='1.000' size='tiny' color='red' textAlign='left' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
