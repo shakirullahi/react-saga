@@ -2,6 +2,7 @@ import { Button, Container, Form, Grid, GridRow, Header, Icon, Segment, Statisti
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
+import EntryLine from './components/EntryLine';
 
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
@@ -18,58 +19,11 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
       
-
-      <Segment color='red' >
-        <Grid columns='3' divided textAlign='right'>
-          <Grid.Row>
-            <Grid.Column width='10' textAlign='left'>
-              Online Purchase
-            </Grid.Column>
-            <Grid.Column width='3' textAlign='right'>
-              $120.00
-            </Grid.Column>
-            <Grid.Column width='3'>
-              <Icon name='edit' bordered />
-              <Icon name='trash' bordered />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-
-      <Segment color='green' >
-        <Grid columns='3' divided textAlign='right'>
-          <Grid.Row>
-            <Grid.Column width='10' textAlign='left'>
-              Mentoring
-            </Grid.Column>
-            <Grid.Column width='3' textAlign='right'>
-              1000.00
-            </Grid.Column>
-            <Grid.Column width='3'>
-              <Icon name='edit' bordered />
-              <Icon name='trash' bordered />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-
-      <Segment color='red' >
-        <Grid columns='3' divided textAlign='right'>
-          <Grid.Row>
-            <Grid.Column width='10' textAlign='left'>
-              Grocery
-            </Grid.Column>
-            <Grid.Column width='3' textAlign='right'>
-              1000.00
-            </Grid.Column>
-            <Grid.Column width='3'>
-              <Icon name='edit' bordered />
-              <Icon name='trash' bordered />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-
+      <EntryLine color='red' title='Online Purchase' value='25,0.00' />
+      <EntryLine color='green' title='Mentoring' value='10,000' />
+      <EntryLine color='red' title='Grocery' value='15,0.00' />
+      
+      
       <MainHeader title="Add new transaction" type='h3'/>
 
       <NewEntryForm/>
