@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid, Icon, Segment } from 'semantic-ui-react'
 
-const EntryLine = ({color,title, value}) => {
+const EntryLine = ({isExpense=false,title, value}) => {
     return (
-        <Segment color={color} >
+        <Segment color={isExpense? 'red': 'green'} >
         <Grid columns='3' divided textAlign='right'>
           <Grid.Row>
             <Grid.Column width='10' textAlign='left'>

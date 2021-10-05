@@ -1,4 +1,5 @@
-import { Button, Container, Form, Grid, GridRow, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
+import { useState } from 'react';
+import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
@@ -8,6 +9,7 @@ import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
 function App() {
+  const [entriies, setEntriies] = useState(initialEntries);
   return (
     <Container>
 
@@ -18,12 +20,14 @@ function App() {
       <DisplayBalances />
 
       <MainHeader title="TransactionHistory" type='h3'/>
+
+      {
+        entriies.map(entry=>(
+          <EntryLine isExpense={entry.isExpense} title={entry.title} value={entry.value} />
+        ))
+      }
       
-      <EntryLine color='red' title='Online Purchase' value='25,0.00' />
-      <EntryLine color='green' title='Mentoring' value='10,000' />
-      <EntryLine color='red' title='Grocery' value='15,0.00' />
-      
-      
+
       <MainHeader title="Add new transaction" type='h3'/>
 
       <NewEntryForm/>
@@ -33,3 +37,27 @@ function App() {
 }
 
 export default App;
+
+
+var initialEntries = [
+  {
+  title:"Salary",
+  value:"100000.00",
+  isExpense:false
+},
+{
+  title:"KSEB",
+  value:"100.00",
+  isExpense:true
+},
+{
+  title:"Grocery",
+  value:"3000.00",
+  isExpense:true
+},
+{
+  title:"Bike Service",
+  value:"200.00",
+  isExpense:true
+}
+];
