@@ -17,8 +17,8 @@ function App() {
     setEntries(result);
   }
 
-  const addEntry = (title, value) => {
-    const result = entries.concat({id:entries.length+1, title,value});
+  const addEntry = (title, value, isExpense) => {
+    const result = entries.concat({id:entries.length+1, title,value,isExpense});
 
     setEntries(result);
 
