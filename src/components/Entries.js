@@ -1,10 +1,10 @@
 import React from 'react';
 import EntryLine from "./EntryLine"
 
-const Entries = ({entries}) => {
+const Entries = ({entries, deleteEntry}) => {
     return (
         entries.map(entry=>(
-            <EntryLine isExpense={entry.isExpense} title={entry.title} value={entry.value} />
+            <EntryLine {...entry} deleteEntry={deleteEntry} key={entry.id} />
           ))
     )
 }

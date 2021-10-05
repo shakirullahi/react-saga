@@ -10,6 +10,13 @@ import NewEntryForm from './components/NewEntryForm';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
+
+  // Delete entry
+  const deleteEntry = id => {
+    const result = entries.filter(entry=> entry.id!==id);
+    setEntries(result);
+  }
+
   return (
     <Container>
 
@@ -21,7 +28,7 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      <Entries entries={entries} />
+      <Entries entries={entries}  deleteEntry={deleteEntry} />
   
       <MainHeader title="Add new transaction" type='h3'/>
 
@@ -36,21 +43,25 @@ export default App;
 
 var initialEntries = [
   {
-  title:"Salary",
+  id:1,
+    title:"Salary",
   value:"100000.00",
   isExpense:false
 },
 {
+  id:2,
   title:"KSEB",
   value:"100.00",
   isExpense:true
 },
 {
+  id:3,
   title:"Grocery",
   value:"3000.00",
   isExpense:true
 },
 {
+  id:4,
   title:"Bike Service",
   value:"200.00",
   isExpense:true
