@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button, Modal } from 'semantic-ui-react'
+import EntryLine from './EntryLine'
+import NewEntryForm from './NewEntryForm'
 
 const EditEntryModal = ({isOpen,setIsOpen}) => {
     return (
@@ -7,7 +9,7 @@ const EditEntryModal = ({isOpen,setIsOpen}) => {
             <Modal.Header>
                 Edit Entry
             </Modal.Header>
-            <Modal.Description>Something</Modal.Description>
+            <NewEntryForm/>
             <Modal.Actions>
                 <Button onClick={()=>setIsOpen(false)}>Close</Button>
             </Modal.Actions>

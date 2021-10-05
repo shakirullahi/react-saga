@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { Checkbox, Form, Segment } from 'semantic-ui-react';
+import { Form} from 'semantic-ui-react';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
+import EntryForm from "./EntryForm"
 
 const NewEntryForm = ({addEntry}) => {
   const [title, setTitle] = useState('');
@@ -9,29 +10,15 @@ const NewEntryForm = ({addEntry}) => {
   const clearForm = ()=> {
     setTitle('');
     setValue('');
-    setIsExpense(false);
+    setIsExpense(true);
   }
   
     return (
-        <Form unstackable>
-        <Form.Group>
-          <Form.Input icon='tags' width='12' label='Description' placeholder="New shiny thing" value={title} onChange={(e)=>setTitle(e.target.value)} />
-
-          <Form.Input width='4' label='Value' placeholder='100.00' icon='dollar' iconPosition='left' value={value}  onChange={(e)=>setValue(e.target.value)} />
-        </Form.Group>
-
-        <Segment compact>
-          <Checkbox 
-          label="Is Expense"
-          toggle
-          checked={isExpense}
-          onChange={()=>setIsExpense(oldState=>!oldState)}
-          />
-          </Segment>
+      <Form unstackable>
         
+        <EntryForm title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} />
+
         <ButtonSaveOrCancel save='Save' cancel='Cancel' title={title} value={value} isExpense={isExpense} addEntry={addEntry} clearForm={clearForm}/>
-        
-        
 
       </Form>
     )
