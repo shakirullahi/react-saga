@@ -25,7 +25,7 @@ const EntryLine = ({id,isExpense=false,title, value, deleteEntry}) => {
           </Grid.Row>
         </Grid>
       </Segment>
-      <EditEntryModal isOpen={isOpen} />
+      <EditEntryModal isOpen={isOpen} setIsOpen={setIsOpen}/>
     </Fragment>
 
     )

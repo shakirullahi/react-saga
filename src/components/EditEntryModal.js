@@ -1,9 +1,17 @@
 import React from 'react'
-import { Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 
-const EditEntryModal = ({isOpen}) => {
+const EditEntryModal = ({isOpen,setIsOpen}) => {
     return (
-        <Modal open={isOpen}></Modal>
+        <Modal open={isOpen}>
+            <Modal.Header>
+                Edit Entry
+            </Modal.Header>
+            <Modal.Description>Something</Modal.Description>
+            <Modal.Actions>
+                <Button onClick={()=>setIsOpen(false)}>Close</Button>
+            </Modal.Actions>
+        </Modal>
     )
 }
 
