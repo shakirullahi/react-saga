@@ -3,7 +3,7 @@ import { Fragment } from 'react/cjs/react.production.min'
 import { Grid, Icon, Segment } from 'semantic-ui-react'
 import EditEntryModal from './EditEntryModal'
 
-const EntryLine = ({id,isExpense=false,title, value, deleteEntry,setIsOpen}) => {
+const EntryLine = ({id,isExpense=false,title, value, deleteEntry,editEntry}) => {
 
   
 
@@ -19,7 +19,7 @@ const EntryLine = ({id,isExpense=false,title, value, deleteEntry,setIsOpen}) => 
               {value}
             </Grid.Column>
             <Grid.Column width='3'>
-              <Icon name='edit' bordered onClick={()=>setIsOpen(true)} />
+              <Icon name='edit' bordered onClick={()=>editEntry(id)} />
               <Icon name='trash' bordered onClick={()=>deleteEntry(id)} />
             </Grid.Column>
           </Grid.Row>

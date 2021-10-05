@@ -22,6 +22,17 @@ function App() {
     setIsExpense(true);
   }
 
+  //edit Entry
+  const editEntry = id => {
+    if(id){
+      const index = entries.findIndex(entry=>entry.id===id);
+      setTitle(entries[index].title);
+      setValue(entries[index].value);
+      setIsExpense(entries[index].isExpense);
+      setIsOpen(true); 
+    }
+  }
+
   // Delete entry
   const deleteEntry = id => {
     const result = entries.filter(entry=> entry.id!==id);
@@ -46,14 +57,24 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      <Entries entries={entries}  deleteEntry={deleteEntry} setIsOpen={setIsOpen} />
+      <Entries entries={entries}  deleteEntry={deleteEntry} editEntry={editEntry} />
   
       <MainHeader title="Add new transaction" type='h3'/>
 
       <NewEntryForm addEntry={addEntry} title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} clearForm={clearForm}/>
 
 
-      <EditEntryModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <EditEntryModal 
+      isOpen={isOpen} 
+      setIsOpen={setIsOpen}
+      title={title} 
+      value={value} 
+      isExpense={isExpense} 
+      setValue={setValue} 
+      setTitle={setTitle} 
+      setIsExpense={setIsExpense} 
+      clearForm={clearForm}  
+      />
 
     </Container>
   );
