@@ -3,6 +3,7 @@ import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
+import EditEntryModal from './components/EditEntryModal';
 import Entries from './components/Entries';
 
 import MainHeader from './components/MainHeader';
@@ -10,6 +11,16 @@ import NewEntryForm from './components/NewEntryForm';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
+  const [title, setTitle] = useState('');
+  const [value, setValue] = useState('');
+  const [isExpense, setIsExpense] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const clearForm = ()=> {
+    setTitle('');
+    setValue('');
+    setIsExpense(true);
+  }
 
   // Delete entry
   const deleteEntry = id => {
@@ -35,11 +46,14 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      <Entries entries={entries}  deleteEntry={deleteEntry} />
+      <Entries entries={entries}  deleteEntry={deleteEntry} setIsOpen={setIsOpen} />
   
       <MainHeader title="Add new transaction" type='h3'/>
 
-      <NewEntryForm addEntry={addEntry}/>
+      <NewEntryForm addEntry={addEntry} title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} clearForm={clearForm}/>
+
+
+      <EditEntryModal isOpen={isOpen} setIsOpen={setIsOpen}/>
 
     </Container>
   );

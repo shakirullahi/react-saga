@@ -3,9 +3,9 @@ import { Fragment } from 'react/cjs/react.production.min'
 import { Grid, Icon, Segment } from 'semantic-ui-react'
 import EditEntryModal from './EditEntryModal'
 
-const EntryLine = ({id,isExpense=false,title, value, deleteEntry}) => {
+const EntryLine = ({id,isExpense=false,title, value, deleteEntry,setIsOpen}) => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  
 
     return (
       <Fragment>
@@ -25,7 +25,6 @@ const EntryLine = ({id,isExpense=false,title, value, deleteEntry}) => {
           </Grid.Row>
         </Grid>
       </Segment>
-      <EditEntryModal isOpen={isOpen} setIsOpen={setIsOpen}/>
     </Fragment>
 
     )
