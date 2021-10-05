@@ -3,13 +3,13 @@ import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
-import EntryLine from './components/EntryLine';
+import Entries from './components/Entries';
 
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
 function App() {
-  const [entriies, setEntriies] = useState(initialEntries);
+  const [entries, setEntries] = useState(initialEntries);
   return (
     <Container>
 
@@ -21,13 +21,8 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      {
-        entriies.map(entry=>(
-          <EntryLine isExpense={entry.isExpense} title={entry.title} value={entry.value} />
-        ))
-      }
-      
-
+      <Entries entries={entries} />
+  
       <MainHeader title="Add new transaction" type='h3'/>
 
       <NewEntryForm/>
