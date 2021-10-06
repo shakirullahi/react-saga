@@ -9,8 +9,6 @@ import Entries from './components/Entries';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
-import {createStore} from "redux"
-
 function App() {
   const [entries, setEntries] = useState(initialEntries);
   const [title, setTitle] = useState('');
@@ -60,44 +58,6 @@ function App() {
     setBalanceTotal(totalIncomes-totalExpenses);
 
   }, [entries])
-
-// 
-
- const entriesReducer = (state=initialEntries, action)=> {
-  switch (action.type) {
-    case 'ADD_ENTRY':
-        return ([ ...state, action.payload]);
-    case 'REMOVE_ENTRY':
-      return (state.filter(entry=>entry.id !== action.payload.id))
-  
-    default:
-      return state;
-  }
-};
-
-  const store = createStore(entriesReducer);
-
-  store.subscribe(()=>console.log(store.getState()))
-
-// 
-
-  const payload_add = {
-    id:5,
-    title:"From redux",
-    value:897,
-    isExpense:false
-  }
-
-  const addEntryRedux = payload => {
-    return {type:"ADD_ENTRY", payload}
-  }
-  
-  const removeEntryRedux =  id => {
-    return {type:"REMOVE_ENTRY", payload:{id}}
-  }
-
-  store.dispatch(addEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(5));
 
   //edit Entry
   const editEntry = id => {
