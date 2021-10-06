@@ -4,6 +4,7 @@ import { Form} from 'semantic-ui-react';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
 import EntryForm from "./EntryForm"
 import {addEntryRedux} from "../actions/entries.actions"
+import {v4 as uuidv4} from "uuid";
 
 const NewEntryForm = ({clearForm}) => {
   
@@ -14,7 +15,7 @@ const NewEntryForm = ({clearForm}) => {
   
   const addEntry = () => {
     dispatch(addEntryRedux({
-      id:5,
+      id:uuidv4(),
       title,
       value,
       isExpense
