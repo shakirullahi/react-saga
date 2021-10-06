@@ -50,10 +50,10 @@ function App() {
 
     entries.map(entry => {
       if(entry.isExpense){
-        return (totalExpenses += entry.value);
+        return (totalExpenses += Number(entry.value));
       }
       else{
-        return (totalIncomes += entry.value);
+        return (totalIncomes += Number(entry.value));
       }
     });
 
@@ -76,19 +76,14 @@ function App() {
     }
   }
 
-  // Delete entry
-  const deleteEntry = id => {
-    const result = entries.filter(entry=> entry.id!==id);
-    // setEntries(result);
-  }
 
-  const addEntry = () => {
-    const result = entries.concat({id:entries.length+1, title,value:parseFloat(value),isExpense});
+  // const addEntry = () => {
+  //   const result = entries.concat({id:entries.length+1, title,value:parseFloat(value),isExpense});
 
-    // setEntries(result);
-    clearForm();
+  //   // setEntries(result);
+  //   clearForm();
 
-  }
+  // }
 
   return (
     <Container>
@@ -105,7 +100,7 @@ function App() {
   
       <MainHeader title="Add new transaction" type='h3'/>
 
-      <NewEntryForm addEntry={addEntry} title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} clearForm={clearForm}/>
+      <NewEntryForm  clearForm={clearForm}/>
 
 
       <EditEntryModal 
