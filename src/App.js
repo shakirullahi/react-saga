@@ -86,10 +86,16 @@ function App() {
     isExpense:false
   }
 
-  const payload_remove = {id:5};
+  const addEntryRedux = payload => {
+    return {type:"ADD_ENTRY", payload}
+  }
+  
+  const removeEntryRedux =  id => {
+    return {type:"REMOVE_ENTRY", payload:{id}}
+  }
 
-  store.dispatch({type:"ADD_ENTRY", payload:payload_add});
-  store.dispatch({type:"REMOVE_ENTRY", payload:payload_remove});
+  store.dispatch(addEntryRedux(payload_add));
+  store.dispatch(removeEntryRedux(5));
 
   //edit Entry
   const editEntry = id => {
