@@ -9,6 +9,9 @@ import Entries from './components/Entries';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
+
+import {useSelector} from "react-redux";
+
 function App() {
   const [entries, setEntries] = useState(initialEntries);
   const [title, setTitle] = useState('');
@@ -19,6 +22,8 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0)
   const [expenseTotal, setExpenseTotal] = useState(0)
   const [balanceTotal, setBalanceTotal] = useState(0)
+
+  const entriesRedux = useSelector(state => state.entries)
 
   const clearForm = ()=> {
     setTitle('');
@@ -97,7 +102,7 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      <Entries entries={entries}  deleteEntry={deleteEntry} editEntry={editEntry} />
+      <Entries entries={entriesRedux}  deleteEntry={deleteEntry} editEntry={editEntry} />
   
       <MainHeader title="Add new transaction" type='h3'/>
 

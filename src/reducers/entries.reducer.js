@@ -16,13 +16,13 @@ export default reducer;
 var initialEntries = [
     {
     id:1,
-    title:"Salary",
+    title:"Salary redux",
     value:100000.00,
     isExpense:false
   },
   {
     id:2,
-    title:"KSEB",
+    title:"KSEB redux",
     value:100.00,
     isExpense:true
   },
