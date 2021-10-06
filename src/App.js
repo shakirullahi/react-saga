@@ -31,6 +31,7 @@ function App() {
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
       setEntries(newEntries);
+      clearForm();
     }
   }, [isOpen])
 
@@ -43,6 +44,7 @@ function App() {
       setIsExpense(entries[index].isExpense);
       setIsOpen(true); 
       setEntryId(id); 
+      // clearForm();
     }
   }
 
@@ -52,10 +54,11 @@ function App() {
     setEntries(result);
   }
 
-  const addEntry = (title, value, isExpense) => {
+  const addEntry = () => {
     const result = entries.concat({id:entries.length+1, title,value,isExpense});
 
     setEntries(result);
+    clearForm();
 
   }
 
@@ -85,8 +88,7 @@ function App() {
       isExpense={isExpense} 
       setValue={setValue} 
       setTitle={setTitle} 
-      setIsExpense={setIsExpense} 
-      clearForm={clearForm}  
+      setIsExpense={setIsExpense}  
       />
 
     </Container>

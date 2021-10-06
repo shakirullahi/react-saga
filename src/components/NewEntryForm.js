@@ -11,7 +11,7 @@ const NewEntryForm = ({addEntry, title, value, isExpense,setTitle, setValue,setI
         
         <EntryForm title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} />
 
-        <ButtonSaveOrCancel save='Save' cancel='Cancel' title={title} value={value} isExpense={isExpense} addEntry={addEntry} clearForm={clearForm}/>
+        <ButtonSaveOrCancel save='Save' cancel='Cancel' addEntry={addEntry} clearForm={clearForm}/>
 
       </Form>
     )

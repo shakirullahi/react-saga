@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import EntryForm from './EntryForm'
 
-const EditEntryModal = ({isOpen,setIsOpen,  value, title, isExpense, setIsExpense, setTitle, setValue, clearForm}) => {
+const EditEntryModal = ({isOpen,setIsOpen,  value, title, isExpense, setIsExpense, setTitle, setValue}) => {
     
     return (
         <Modal open={isOpen}>
