@@ -62,13 +62,30 @@ function App() {
   }, [entries])
 
 // 
-  const store = createStore((state=initialEntries)=>state);
+  const store = createStore((state=initialEntries, action)=>{
+    switch (action.type) {
+      case 'ADD_ENTRY':
+          return ([ ...state, action.payload]);
+    
+      default:
+        return state;
+    }
+    // return state;
+  });
 
-  console.log(store.getState());
+  store.subscribe(()=>console.log(store.getState()))
 
 // 
 
+  const payload = {
+    id:5,
+    title:"From redux",
+    value:897,
+    isExpense:false
+  }
 
+  store.dispatch({type:"ADD_ENTRY", payload});
+  store.dispatch({type:"ADD_ENTRY", payload});
 
   //edit Entry
   const editEntry = id => {
