@@ -66,6 +66,8 @@ function App() {
     switch (action.type) {
       case 'ADD_ENTRY':
           return ([ ...state, action.payload]);
+      case 'REMOVE_ENTRY':
+        return (state.filter(entry=>entry.id !== action.payload.id))
     
       default:
         return state;
@@ -77,15 +79,17 @@ function App() {
 
 // 
 
-  const payload = {
+  const payload_add = {
     id:5,
     title:"From redux",
     value:897,
     isExpense:false
   }
 
-  store.dispatch({type:"ADD_ENTRY", payload});
-  store.dispatch({type:"ADD_ENTRY", payload});
+  const payload_remove = {id:5};
+
+  store.dispatch({type:"ADD_ENTRY", payload:payload_add});
+  store.dispatch({type:"REMOVE_ENTRY", payload:payload_remove});
 
   //edit Entry
   const editEntry = id => {
