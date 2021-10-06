@@ -36,6 +36,7 @@ function App() {
       setEntries(newEntries);
       clearForm();
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Fragment } from 'react/cjs/react.production.min'
 import { Grid, Icon, Segment } from 'semantic-ui-react'
-import EditEntryModal from './EditEntryModal'
 
 const EntryLine = ({id,isExpense=false,title, value, deleteEntry,editEntry}) => {
 
