@@ -33,7 +33,27 @@ function App() {
       setEntries(newEntries);
       clearForm();
     }
-  }, [isOpen])
+  }, [isOpen]);
+
+  useEffect(() => {
+    
+    let totalExpenses = 0;
+    let totalIncomes = 0;
+
+    entries.map(entry => {
+      if(entry.isExpense){
+        return (totalExpenses += entry.value);
+      }
+      else{
+        return (totalIncomes += entry.value);
+      }
+    });
+
+    console.log("Total Expenses = ", totalExpenses);
+    console.log("Total Incomes = ", totalIncomes);
+    console.log("Balance = ", totalIncomes-totalExpenses);
+
+  }, entries)
 
   //edit Entry
   const editEntry = id => {
@@ -102,25 +122,25 @@ var initialEntries = [
   {
   id:1,
   title:"Salary",
-  value:"100000.00",
+  value:100000.00,
   isExpense:false
 },
 {
   id:2,
   title:"KSEB",
-  value:"100.00",
+  value:100.00,
   isExpense:true
 },
 {
   id:3,
   title:"Grocery",
-  value:"3000.00",
+  value:3000.00,
   isExpense:true
 },
 {
   id:4,
   title:"Bike Service",
-  value:"200.00",
+  value:200.00,
   isExpense:true
 }
 ];
