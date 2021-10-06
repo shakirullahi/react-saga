@@ -16,6 +16,9 @@ function App() {
   const [isExpense, setIsExpense] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
+  const [incomeTotal, setIncomeTotal] = useState(0)
+  const [expenseTotal, setExpenseTotal] = useState(0)
+  const [balanceTotal, setBalanceTotal] = useState(0)
 
   const clearForm = ()=> {
     setTitle('');
@@ -49,18 +52,18 @@ function App() {
       }
     });
 
-    console.log("Total Expenses = ", totalExpenses);
-    console.log("Total Incomes = ", totalIncomes);
-    console.log("Balance = ", totalIncomes-totalExpenses);
+    setExpenseTotal(totalExpenses);
+    setIncomeTotal(totalIncomes);
+    setBalanceTotal(totalIncomes-totalExpenses);
 
-  }, entries)
+  }, [entries])
 
   //edit Entry
   const editEntry = id => {
     if(id){
       const index = entries.findIndex(entry=>entry.id===id);
       setTitle(entries[index].title);
-      setValue(entries[index].value);
+      setValue(parseFloat(entries[index].value));
       setIsExpense(entries[index].isExpense);
       setIsOpen(true); 
       setEntryId(id); 
@@ -75,7 +78,7 @@ function App() {
   }
 
   const addEntry = () => {
-    const result = entries.concat({id:entries.length+1, title,value,isExpense});
+    const result = entries.concat({id:entries.length+1, title,value:parseFloat(value),isExpense});
 
     setEntries(result);
     clearForm();
@@ -87,9 +90,9 @@ function App() {
 
       <MainHeader title="Welcome to Budget App"/>
 
-      <DisplayBalance label="Your Balance" value='10,000' size='small' color='black' textAlign='left'/>
+      <DisplayBalance label="Your Balance" value={balanceTotal} size='small' color='black' textAlign='left'/>
 
-      <DisplayBalances />
+      <DisplayBalances incomeTotal={incomeTotal} expenseTotal={expenseTotal} />
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
