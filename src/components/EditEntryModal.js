@@ -11,7 +11,8 @@ const EditEntryModal = ({isOpen,setIsOpen,  value, title, isExpense, setIsExpens
             </Modal.Header>
             <EntryForm title={title} value={value} isExpense={isExpense} setValue={setValue} setTitle={setTitle} setIsExpense={setIsExpense} />
             <Modal.Actions>
-                <Button onClick={()=>{clearForm();setIsOpen(false)}}>Close</Button>
+                <Button onClick={()=>{setIsOpen(false)}}>Close</Button>
+                <Button primary onClick={()=>{setIsOpen(false)}}>Save</Button>
             </Modal.Actions>
         </Modal>
     )

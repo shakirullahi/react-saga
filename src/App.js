@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
@@ -15,12 +15,24 @@ function App() {
   const [value, setValue] = useState('');
   const [isExpense, setIsExpense] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [entryId, setEntryId] = useState();
 
   const clearForm = ()=> {
     setTitle('');
     setValue('');
     setIsExpense(true);
   }
+
+  useEffect(() => {
+    if(!isOpen && entryId){
+      const index = entries.findIndex(entry => entry.id === entryId);
+      const newEntries = [...entries];
+      newEntries[index].title = title;
+      newEntries[index].value = value;
+      newEntries[index].isExpense = isExpense;
+      setEntries(newEntries);
+    }
+  }, [isOpen])
 
   //edit Entry
   const editEntry = id => {
@@ -30,6 +42,7 @@ function App() {
       setValue(entries[index].value);
       setIsExpense(entries[index].isExpense);
       setIsOpen(true); 
+      setEntryId(id); 
     }
   }
 
