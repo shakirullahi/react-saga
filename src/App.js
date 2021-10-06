@@ -9,6 +9,8 @@ import Entries from './components/Entries';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
+import {createStore} from "redux"
+
 function App() {
   const [entries, setEntries] = useState(initialEntries);
   const [title, setTitle] = useState('');
@@ -58,6 +60,15 @@ function App() {
     setBalanceTotal(totalIncomes-totalExpenses);
 
   }, [entries])
+
+// 
+  const store = createStore((state=initialEntries)=>state);
+
+  console.log(store.getState());
+
+// 
+
+
 
   //edit Entry
   const editEntry = id => {
