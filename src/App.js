@@ -62,18 +62,20 @@ function App() {
   }, [entries])
 
 // 
-  const store = createStore((state=initialEntries, action)=>{
-    switch (action.type) {
-      case 'ADD_ENTRY':
-          return ([ ...state, action.payload]);
-      case 'REMOVE_ENTRY':
-        return (state.filter(entry=>entry.id !== action.payload.id))
-    
-      default:
-        return state;
-    }
-    // return state;
-  });
+
+ const entriesReducer = (state=initialEntries, action)=> {
+  switch (action.type) {
+    case 'ADD_ENTRY':
+        return ([ ...state, action.payload]);
+    case 'REMOVE_ENTRY':
+      return (state.filter(entry=>entry.id !== action.payload.id))
+  
+    default:
+      return state;
+  }
+};
+
+  const store = createStore(entriesReducer);
 
   store.subscribe(()=>console.log(store.getState()))
 
