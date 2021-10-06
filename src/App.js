@@ -13,7 +13,6 @@ import NewEntryForm from './components/NewEntryForm';
 import {useSelector} from "react-redux";
 
 function App() {
-  const [entries, setEntries] = useState(initialEntries);
   const [title, setTitle] = useState('');
   const [value, setValue] = useState('');
   const [isExpense, setIsExpense] = useState(true);
@@ -23,7 +22,7 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0)
   const [balanceTotal, setBalanceTotal] = useState(0)
 
-  const entriesRedux = useSelector(state => state.entries)
+  const entries = useSelector(state => state.entries)
 
   const clearForm = ()=> {
     setTitle('');
@@ -38,7 +37,7 @@ function App() {
       newEntries[index].title = title;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
-      setEntries(newEntries);
+      // setEntries(newEntries);
       clearForm();
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,13 +79,13 @@ function App() {
   // Delete entry
   const deleteEntry = id => {
     const result = entries.filter(entry=> entry.id!==id);
-    setEntries(result);
+    // setEntries(result);
   }
 
   const addEntry = () => {
     const result = entries.concat({id:entries.length+1, title,value:parseFloat(value),isExpense});
 
-    setEntries(result);
+    // setEntries(result);
     clearForm();
 
   }
@@ -102,7 +101,7 @@ function App() {
 
       <MainHeader title="TransactionHistory" type='h3'/>
 
-      <Entries entries={entriesRedux}  deleteEntry={deleteEntry} editEntry={editEntry} />
+      <Entries entries={entries}  editEntry={editEntry} />
   
       <MainHeader title="Add new transaction" type='h3'/>
 
@@ -126,30 +125,3 @@ function App() {
 
 export default App;
 
-
-var initialEntries = [
-  {
-  id:1,
-  title:"Salary",
-  value:100000.00,
-  isExpense:false
-},
-{
-  id:2,
-  title:"KSEB",
-  value:100.00,
-  isExpense:true
-},
-{
-  id:3,
-  title:"Grocery",
-  value:3000.00,
-  isExpense:true
-},
-{
-  id:4,
-  title:"Bike Service",
-  value:200.00,
-  isExpense:true
-}
-];
